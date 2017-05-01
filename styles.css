@@ -2,6 +2,7 @@ body, div {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: Arial;
 }
 
 .timepicker {
@@ -31,6 +32,53 @@ body, div {
 
 .tp_footer {
 
+}
+
+.pointer {
+    padding-left: 6px;
+    position: relative;
+    height: 50px;
+    width: 144px;
+    top: 125px;
+    transform-origin: right;
+}
+
+.pointer_line {
+    position: relative;
+    width: 140px;
+    height: 2px;
+    background-color: lightcoral;
+    top: 25px;
+}
+
+.pointer_circle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: lightcoral;
+    border-radius: 50%;
+}
+
+.pointer_smallcircle {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    background-color: lightcoral;
+    border-radius: 50%;
+    top: 22px;
+    left: 137px;
+}
+
+.number {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: default;
+}
+
+.visible {
+    visibility: visible;
+    display: block;
 }
 
 .light {
