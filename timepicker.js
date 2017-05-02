@@ -7,14 +7,18 @@ var reg = document.getElementsByClassName("reg");
 var clocks_reg = [];
 var clocks_am = [];
 
-var reg_numbers = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-var reg_numbers_ = [12,13,14,15,16,17,18,19,20,21,22,23,24];
+const reg_numbers = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+const reg_numbers_ = [12,13,14,15,16,17,18,19,20,21,22,23,0];
 
-var mins = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 0];
+const mins = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 0];
 
+const DAY = 1;
+const NIGHT = 2;
+const MIN = 3;
+const HOUR = 4;
 
 for(var i = 0; i < reg.length; i++) {
-    reg[i].innerHTML += "<div class='tp_head'></div><div class='tp_body'><div class='tp_clock reg_clock' onmouseenter='mouse_over(event, this)' onmouseleave='mouse_out(event, this)' onmousemove='mouse_move(event, this)'></div><div class='tp_footer'></div></div>"
+    reg[i].innerHTML += "<div class='tp_head'></div><div class='tp_body'><div class='tp_clock reg_clock' onclick='mouse_click(event, this, this.parentElement.parentElement)' onmouseenter='mouse_over(event, this)' onmouseleave='mouse_out(event, this)' onmousemove='mouse_move(event, this)'></div><div class='tp_footer'></div></div>"
     clocks_reg.push({
         "element":reg[i],
         "hour":9,
@@ -30,7 +34,7 @@ for(var i = 0; i < reg.length; i++) {
 }
 
 for(var i = 0; i < clocks_reg.length; i++) {
-    fillClock(mins, clocks_reg[i].clock)
+    fillClock(reg_numbers_, clocks_reg[i].clock)
 }
 
 function fillClock(numbers, element) {
@@ -50,29 +54,29 @@ function fillClock(numbers, element) {
 
 function mouse_over(e, src) {
     var p = src.getElementsByClassName("pointer")[0];
-    set_pointer(e, src, p);
+    setPointer(getAngleNumber(e, src), p);
 }
 
 function mouse_out(e, src) {
     var p = src.getElementsByClassName("pointer")[0];
-    set_pointer(e, src, p);
+    setPointer(getAngleNumber(e, src), p);
 }
 
 function mouse_move(e, src) {
     var p = src.getElementsByClassName("pointer")[0];
-    set_pointer(e, src, p);
+    setPointer(getAngleNumber(e, src), p);
 }
 
-function mouse_click(e, src){
+function mouse_click(e, src, timepicker){
     var p = src.getElementsByClassName("pointer")[0];
+    console.log();
 
 
-
-    set_pointer(e, src, p);
+    setPointer(getAngleNumber(e, src), p);
 
 }
 
-function set_pointer(e, src, p) {
+function getAngleNumber(e, src) {
     var pos_origin = src.getBoundingClientRect();
 
     var origin_x = -150;
@@ -80,17 +84,35 @@ function set_pointer(e, src, p) {
     var x_mouse = e.x - pos_origin.left - 150;
     var y_mouse = -(e.y - pos_origin.top - 150);
 
-    var	dx = x_mouse - origin_x;
-    var dy = y_mouse - origin_y;
-
     var angle = Math.atan2(y_mouse, x_mouse) - Math.atan2(origin_y, origin_x);
 
     var rotateAngle = -(angle * 57.3);
     var angle_ratio = Math.round(rotateAngle/30);
-    console.log(angle_ratio);
-
-    p.style.transform = "rotate("+ (angle_ratio * 30) + "deg)";
+    return angle_ratio;
 }
 
+function calculateTime(type, number) {
+    var time = 0;
 
+    if(type = DAY){
+        time += 12
+    }
 
+    return time;
+}
+
+function setPointer(number, p) {
+    p.style.transform = "rotate("+ (number * 30) + "deg)";
+}
+
+function setHeader(element, time, type) {
+    if(type = HOUR){
+
+    }
+}
+
+function changeNumbers(type, element) {
+    if(type = DAY){
+        element
+    }
+}
