@@ -154,6 +154,9 @@ function calculateTime(type, number) {
 //Updates the pointer on a clock
 function setPointer(number, p) {
     p.style.transform = "rotate("+ (number * 30) + "deg)";
+    p.style.msTransform = "rotate("+ (number * 30) + "deg)";
+    p.style.webkitTransform = "rotate("+ (number * 30) + "deg)";
+    p.style.mozTransform = "rotate("+ (number * 30) + "deg)";
 }
 
 //Updates the time or minutes
