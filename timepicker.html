@@ -7,14 +7,25 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-
-<div class="timepicker reg light" >
+<div class="timeinput">
+    <p class="text">09:00</p>
+    <button onclick="openTimepicker(this.nextElementSibling)">Open timepicker regular light</button>
+    <div class="timepicker reg light">
+    </div>
 </div>
 
-<div class="timepicker reg light" >
+<div class="timeinput">
+    <p class="text">09:00</p>
+    <button onclick="openTimepicker(this.nextElementSibling)">Open timepicker regular dark</button>
+    <div class="timepicker reg dark" >
+    </div>
 </div>
 
-<div class="timepicker reg dark" >
+<div class="timeinput">
+    <p class="text">09:00 am</p>
+    <button onclick="openTimepicker(this.nextElementSibling)">Open timepicker american light</button>
+    <div class="timepicker american light" >
+    </div>
 </div>
 
 <script src="timepicker.js"></script>
